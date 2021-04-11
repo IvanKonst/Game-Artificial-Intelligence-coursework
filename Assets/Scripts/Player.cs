@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Player : MonoBehaviour
 {
     public List<Card> cards;
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour
     public bool playercheck = false;
     public bool playerfold = false;
 
-    public Text raise_text;
+    public TMP_Text raise_text;
 
     public double handStrenght;
 
@@ -26,12 +27,9 @@ public class Player : MonoBehaviour
 
     public GameObject playercard;
     public GameObject playercard2;
-    public GameObject AI1card;
-    public GameObject AI1card2;
-    public GameObject AI2card;
-    public GameObject AI2card2;
-    public GameObject AI3card;
-    public GameObject AI3card2;
+    public GameObject AIcard1;
+    public GameObject AIcard2;
+  
  
 
     // Start is called before the first frame update
@@ -78,7 +76,7 @@ public class Player : MonoBehaviour
     //Player action, returning different values, based on the player decision
     public virtual void Playeraction()
     {
-        Debug.Log("Player turn");
+      //  Debug.Log("Player turn");
         if (finishturn == true)
         {
             if (playercheck == true)
@@ -149,52 +147,52 @@ public class Player : MonoBehaviour
         //AI1 cards
         if (player == 2)
         {
-            AI1card = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai1cardposition1.transform.position.x, pokergame.ai1cardposition1.transform.position.y, pokergame.ai1cardposition1.transform.position.z), Quaternion.identity);
-            AI1card.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard1 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai1cardposition1.transform.position.x, pokergame.ai1cardposition1.transform.position.y, pokergame.ai1cardposition1.transform.position.z), Quaternion.identity);
+            AIcard1.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai1.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card.GetComponent<Selectable>().faceUp = true;
-            AI1card.gameObject.tag = "card";
+            AIcard1.GetComponent<Selectable>().faceUp = false;
+            AIcard1.gameObject.tag = "card";
 
-            AI1card2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai1cardposition2.transform.position.x, pokergame.ai1cardposition2.transform.position.y, pokergame.ai1cardposition2.transform.position.z), Quaternion.identity);
-            AI1card2.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai1cardposition2.transform.position.x, pokergame.ai1cardposition2.transform.position.y, pokergame.ai1cardposition2.transform.position.z), Quaternion.identity);
+            AIcard2.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai1.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card2.GetComponent<Selectable>().faceUp = true;
-            AI1card2.gameObject.tag = "card";
+            AIcard2.GetComponent<Selectable>().faceUp = false;
+            AIcard2.gameObject.tag = "card";
         }
         //AI2 cards
         if (player == 3)
         {
-            AI1card = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai2cardposition1.transform.position.x, pokergame.ai2cardposition1.transform.position.y, pokergame.ai2cardposition1.transform.position.z), Quaternion.identity);
-            AI1card.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard1 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai2cardposition1.transform.position.x, pokergame.ai2cardposition1.transform.position.y, pokergame.ai2cardposition1.transform.position.z), Quaternion.identity);
+            AIcard1.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai2.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card.GetComponent<Selectable>().faceUp = true;
-            AI1card.gameObject.tag = "card";
+            AIcard1.GetComponent<Selectable>().faceUp = false;
+            AIcard1.gameObject.tag = "card";
 
-            AI1card2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai2cardposition2.transform.position.x, pokergame.ai2cardposition2.transform.position.y, pokergame.ai2cardposition2.transform.position.z), Quaternion.identity);
-            AI1card2.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai2cardposition2.transform.position.x, pokergame.ai2cardposition2.transform.position.y, pokergame.ai2cardposition2.transform.position.z), Quaternion.identity);
+            AIcard2.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai3.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card2.GetComponent<Selectable>().faceUp = true;
-            AI1card2.gameObject.tag = "card";
+            AIcard2.GetComponent<Selectable>().faceUp = false;
+            AIcard2.gameObject.tag = "card";
         }
         if (player == 4)
         {
-            AI1card = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai3cardposition1.transform.position.x, pokergame.ai3cardposition1.transform.position.y, pokergame.ai3cardposition1.transform.position.z), Quaternion.identity);
-            AI1card.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard1 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai3cardposition1.transform.position.x, pokergame.ai3cardposition1.transform.position.y, pokergame.ai3cardposition1.transform.position.z), Quaternion.identity);
+            AIcard1.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai2.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card.GetComponent<Selectable>().faceUp = true;
-            AI1card.gameObject.tag = "card";
+            AIcard1.GetComponent<Selectable>().faceUp = false;
+            AIcard1.gameObject.tag = "card";
 
-            AI1card2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai3cardposition2.transform.position.x, pokergame.ai3cardposition2.transform.position.y, pokergame.ai3cardposition2.transform.position.z), Quaternion.identity);
-            AI1card2.name = pokergame.CardDecode(pokergame.deck[0]);
+            AIcard2 = Instantiate(pokergame.cardPrefab, new Vector3(pokergame.ai3cardposition2.transform.position.x, pokergame.ai3cardposition2.transform.position.y, pokergame.ai3cardposition2.transform.position.z), Quaternion.identity);
+            AIcard2.name = pokergame.CardDecode(pokergame.deck[0]);
             pokergame.ai3.cards.Add(pokergame.deck[0]);
             pokergame.deck.RemoveAt(0);
-            AI1card2.GetComponent<Selectable>().faceUp = true;
-            AI1card2.gameObject.tag = "card";
+            AIcard2.GetComponent<Selectable>().faceUp = false;
+            AIcard2.gameObject.tag = "card";
         }
 
     }

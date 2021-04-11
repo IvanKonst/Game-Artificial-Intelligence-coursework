@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AI : Player
 {
    // public PokerGame poker;
     public int[] Outcomes;
     public bool haspaid = false;
-    public GameObject FloatingText;
-    public GameObject floatingFoldText;
+    public TMP_Text FloatingText;
+    public TMP_Text floatingFoldText;
     // Update is called once per frame
     void Update()
     {
@@ -18,11 +19,11 @@ public class AI : Player
     //Responsibble for the AI Fold decision, which makes the AI leave the game, and destroy its current cards in the hand
     public void AIFold()
     {
-        Debug.Log("I fold");
-        Debug.Log(pokergame.raise_ammount);
+       // Debug.Log("I fold");
+      //  Debug.Log(pokergame.raise_ammount);
         ShowFloatingFoldText();
-        Destroy(AI1card);
-        Destroy(AI1card2);     
+        Destroy(AIcard1);
+        Destroy(AIcard2);     
         fold = true;
     //    finishturn = true;
         pokergame.player_left--;
@@ -116,7 +117,7 @@ public class AI : Player
                 }
             }
            
-            Debug.Log("hand strenght " + handStrenghtbefore + "win probability " + winprobability + "player action: " + playeraction);
+          //  Debug.Log("hand strenght " + handStrenghtbefore + "win probability " + winprobability + "player action: " + playeraction);
         }
         //else 
         //{
@@ -140,7 +141,7 @@ public class AI : Player
                
                 // Debug.Log("I pay");
                 //finishturn = true;
-                Debug.Log(pokergame.raise_ammount);
+               // Debug.Log(pokergame.raise_ammount);
                 ShowFloatingText();
                 playeraction = 0;
                 haspaid = true;
@@ -149,7 +150,7 @@ public class AI : Player
         }
         if(pokergame.raise_ammount == 0)
         {
-            Debug.Log(pokergame.raise_ammount);
+           // Debug.Log(pokergame.raise_ammount);
             ShowFloatingCheckText();
 
           //  finishturn = true;
@@ -197,20 +198,21 @@ public class AI : Player
     public void ShowFloatingText()
     {
         float Destroytime = 2f;
-       GameObject floattext = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
+        TMP_Text floattext = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
         Destroy(floattext, Destroytime);
     }
     public void ShowFloatingCheckText()
     {
         float Destroytime = 2f;
-        GameObject floattext = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
-        floattext.GetComponent<TextMesh>().text = "Check";
+        TMP_Text floattext = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
+        floattext.GetComponent<TMP_Text>().text = "Check";
         Destroy(floattext, Destroytime);
     }
     public void ShowFloatingFoldText()
     {
         float Destroytime = 2f;
-       GameObject foldtext = Instantiate(floatingFoldText, transform.position, Quaternion.identity, transform);
+        TMP_Text foldtext = Instantiate(floatingFoldText, transform.position, Quaternion.identity, transform);
+        foldtext.GetComponent<TMP_Text>().text = "I fold";
         Destroy(foldtext, Destroytime);
 
     }

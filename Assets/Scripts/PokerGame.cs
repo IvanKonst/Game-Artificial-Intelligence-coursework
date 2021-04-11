@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using System.Linq;
 
 public class PokerGame : MonoBehaviour
@@ -27,12 +28,12 @@ public class PokerGame : MonoBehaviour
     public AI ai2;
     public AI ai3;
     public Player player;
-    public Text player_chips;
-    public Text AI1_chips;
-    public Text AI2_chips;
-    public Text AI3_chips;
-    public Text potText;
-    public GameObject endText;
+    public TMP_Text player_chips;
+    public TMP_Text AI1_chips;
+    public TMP_Text AI2_chips;
+    public TMP_Text AI3_chips;
+    public TMP_Text potText;
+    public TMP_Text endText;
     public int allchecked = 0;
 
     public static string[] suits = new string[] { "Clubs", "Diamonds", "Hearths", "Spades" };
@@ -290,16 +291,22 @@ public class PokerGame : MonoBehaviour
         }
         if (ai1.handStrenght > ai2.handStrenght && ai1.handStrenght > ai3.handStrenght && ai1.handStrenght > player.handStrenght && ai1.fold !=true)
         {
+            ai1.AIcard1.GetComponent<Selectable>().faceUp = true;
+            ai1.AIcard2.GetComponent<Selectable>().faceUp = true;
             EndText("AI1 WINS ! ");           
             ai1.player_chips_ammount += pot;
         }
         if(ai2.handStrenght > ai1.handStrenght && ai2.handStrenght > ai3.handStrenght && ai2.handStrenght > player.handStrenght && ai2.fold != true)
         {
+            ai2.AIcard1.GetComponent<Selectable>().faceUp = true;
+            ai2.AIcard2.GetComponent<Selectable>().faceUp = true;
             EndText("AI2 WINS ! " );
             ai2.player_chips_ammount += pot;
         }
         if(ai3.handStrenght > ai2.handStrenght && ai3.handStrenght > ai1.handStrenght && ai3.handStrenght > player.handStrenght && ai3.fold != true)
         {
+            ai3.AIcard1.GetComponent<Selectable>().faceUp = true;
+            ai3.AIcard2.GetComponent<Selectable>().faceUp = true;
             EndText("AI3 WINS ! ");
             ai3.player_chips_ammount += pot;
         }      
@@ -332,7 +339,7 @@ public class PokerGame : MonoBehaviour
         {
             raise = false;
             FlopDeal();
-            Debug.Log("Flop");
+          //  Debug.Log("Flop");
             
         }
         if(phase == 1 && gameover == false)
@@ -342,7 +349,7 @@ public class PokerGame : MonoBehaviour
             slidera.value = 0;
             raise_ammount = 0;
             TurnDeal();
-            Debug.Log("Turn");
+         //   Debug.Log("Turn");
         }
         if(phase == 2 && gameover == false)
         {
@@ -351,7 +358,7 @@ public class PokerGame : MonoBehaviour
             raise_ammount = 0;
             raise = false;
             RiverDeal();
-            Debug.Log("River");
+           // Debug.Log("River");
         }
         if (phase == 3)
         {
@@ -359,7 +366,7 @@ public class PokerGame : MonoBehaviour
             slidera.value = 0;
             raise_ammount = 0;
             raise = false;
-            Debug.Log("End of round");
+           // Debug.Log("End of round");
             player.CalculateHand();
             ai1.CalculateHand();
             ai2.CalculateHand();
@@ -458,8 +465,8 @@ public class PokerGame : MonoBehaviour
     {
 
         float Destroytime = 10f;
-        GameObject wintext = Instantiate(endText, transform.position, Quaternion.identity, transform);
-        wintext.GetComponent<TextMesh>().text = endingtext;
+        TMP_Text wintext = Instantiate(endText, transform.position, Quaternion.identity, transform);
+        wintext.GetComponent<TMP_Text>().text = endingtext;
         Destroy(wintext, Destroytime);
     }
 }
